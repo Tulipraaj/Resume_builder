@@ -1,4 +1,4 @@
-# Resume_builder
+# Resume_Builder
 RESUME BUILDER FOR STUDENTS  
 Contributors : 
 1. Megala Kumaran
