@@ -1,0 +1,74 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Resume Builder{% endblock %}</title>
+    <!-- Add your CSS links, scripts, or other head elements here -->
+</head>
+<body>
+    <header>
+        <h1>Resume Builder</h1>
+        <nav>
+            <form method="post" action="{% url 'dashboard' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Dashboard</button>
+            </form>
+
+            <form method="post" action="{% url 'add_education' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Add Education</button>
+            </form>
+
+            <form method="post" action="{% url 'add_experience' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Add Experience</button>
+            </form>
+
+            <form method="post" action="{% url 'add_skill' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Add Skill</button>
+            </form>
+
+            <form method="post" action="{% url 'add_personal' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Add Personal Info</button>
+            </form>
+
+            <form method="post" action="{% url 'add_project' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Add Project</button>
+            </form>
+
+            <form method="post" action="{% url 'add_certification' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Add Certification</button>
+            </form>
+
+            <form method="post" action="{% url 'add_language' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Add Language</button>
+            </form>
+
+            <form method="post" action="{% url 'generate_resume_pdf' %}" style="display:inline;" target="_blank">
+                {% csrf_token %}
+                <button type="submit">Generate PDF</button>
+            </form>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Add footer content if needed -->
+    </footer>
+
+    <!-- Add your scripts or other elements before the closing </body> tag if needed -->
+</body>
+
+</html>

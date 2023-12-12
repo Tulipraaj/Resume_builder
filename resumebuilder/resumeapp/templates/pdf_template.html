@@ -1,5 +1,66 @@
-<!-- pdf_template.html -->
-<h2>User Details:</h2>
-<p>Name: {{ user_details.name }}</p>
-<p>Phone Number: {{ user_details.contact }}</p>
-<p>Email: {{ user_details.email }}</p>
+<!-- resume_app/templates/resume_app/pdf_template.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}'s Resume</title>
+    <style>
+        /* Add your styling here for the PDF */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        /* ... */
+    </style>
+</head>
+<body>
+    <h1>{{ user.username }}'s Resume</h1>
+
+
+    {% for personal in personals %}
+        <p>Name : {{ personal.name }}</p>
+        <p>Phone : {{ personal.phone }}</p>
+        <p>Email : {{ personal.email }}</p>
+        <p>Address : {{ personal.address }}</p>
+    {% endfor %}
+
+    <h2>Education</h2>
+    {% for education in educations %}
+        <p>{{ education.degree }} in {{ education.institution }} ({{ education.graduation_year }})</p>
+    {% endfor %}
+
+    <h2>Experience</h2>
+    {% for experience in experiences %}
+        <p>{{ experience.job_title }} at {{ experience.company }} ({{ experience.start_date }} - {{ experience.end_date }})</p>
+        <p>{{ experience.description }}</p>
+    {% endfor %}
+
+    <h2>Skills</h2>
+    {% for skill in skills %}
+        <p>{{ skill.name }}</p>
+    {% endfor %}
+
+    <h2>Projects</h2>
+    {% for project in projects %}
+        <p>{{ project.title }}</p>
+        <p>{{ project.description }}</p>
+    {% endfor %}
+
+    <h2>Certifications</h2>
+    {% for certificate in certifications %}
+        <p>{{ certificate.title }}</p>
+        <p>{{ certificate.issuing_organization }}</p>
+        <p>{{ certificate.date_received }}</p>
+    {% endfor %}
+
+    <h2>Languages</h2>
+    {% for language in languages %}
+        <p>{{ language.name }}</p>
+    {% endfor %}
+
+    <!-- Similar sections for skills, projects, certifications, and languages -->
+
+</body>
+</html>

@@ -1,7 +1,7 @@
-# Resume_builder
-RESUME BUILDER FOR STUDENTS
+# Resume_Builder
+RESUME BUILDER FOR STUDENTS  
 Contributors : 
-1. Megala Kumaran
+1. Megala 
 2. Keerthika
 3. Jayadevi
 4. Tulip Raaj
