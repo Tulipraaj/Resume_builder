@@ -2,6 +2,8 @@
 
 from django.urls import path
 from .views import add_education, add_experience, add_skill, add_personal, add_project, add_certification, add_language, dashboard, generate_resume_pdf
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('add_education/', add_education, name='add_education'),
@@ -11,6 +13,7 @@ urlpatterns = [
     path('add_project/', add_project, name='add_project'),
     path('add_certification/', add_certification, name='add_certification'),
     path('add_language/', add_language, name='add_language'),
-    path('dashboard/', dashboard, name='dashboard'),
+    path('dashboard/', login_required(dashboard), name='dashboard'),
     path('generate_resume_pdf/', generate_resume_pdf, name='generate_resume_pdf'),
+    path('accounts/login/', LoginView.as_view(), name='login'),
 ]

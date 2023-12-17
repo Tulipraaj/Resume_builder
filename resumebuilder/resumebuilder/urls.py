@@ -18,9 +18,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('resume/', include('resumeapp.urls')),
+    path('accounts/login/', LoginView.as_view(), name='login'),
     # Add other app-specific URLs as needed
 ]

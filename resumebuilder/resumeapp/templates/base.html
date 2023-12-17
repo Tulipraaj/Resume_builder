@@ -13,50 +13,56 @@
     <header>
         <h1>Resume Builder</h1>
         <nav>
-            <form method="post" action="{% url 'dashboard' %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Dashboard</button>
-            </form>
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'dashboard' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Dashboard</button>
+                </form>
 
-            <form method="post" action="{% url 'add_education' %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Add Education</button>
-            </form>
+                <form method="post" action="{% url 'add_education' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Add Education</button>
+                </form>
 
-            <form method="post" action="{% url 'add_experience' %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Add Experience</button>
-            </form>
+                <form method="post" action="{% url 'add_experience' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Add Experience</button>
+                </form>
 
-            <form method="post" action="{% url 'add_skill' %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Add Skill</button>
-            </form>
+                <form method="post" action="{% url 'add_skill' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Add Skill</button>
+                </form>
 
-            <form method="post" action="{% url 'add_personal' %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Add Personal Info</button>
-            </form>
+                <form method="post" action="{% url 'add_personal' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Add Personal Info</button>
+                </form>
 
-            <form method="post" action="{% url 'add_project' %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Add Project</button>
-            </form>
+                <form method="post" action="{% url 'add_project' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Add Project</button>
+                </form>
 
-            <form method="post" action="{% url 'add_certification' %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Add Certification</button>
-            </form>
+                <form method="post" action="{% url 'add_certification' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Add Certification</button>
+                </form>
 
-            <form method="post" action="{% url 'add_language' %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Add Language</button>
-            </form>
+                <form method="post" action="{% url 'add_language' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Add Language</button>
+                </form>
 
-            <form method="post" action="{% url 'generate_resume_pdf' %}" style="display:inline;" target="_blank">
-                {% csrf_token %}
-                <button type="submit">Generate PDF</button>
-            </form>
+                <form method="post" action="{% url 'generate_resume_pdf' %}" style="display:inline;" target="_blank">
+                    {% csrf_token %}
+                    <button type="submit">Generate PDF</button>
+                </form>
+            {% else %}
+
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
         </nav>
     </header>
 
