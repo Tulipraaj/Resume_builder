@@ -1,5 +1,3 @@
-<!-- base.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Resume Builder{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #fff;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        nav a, form button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 8px;
+            text-decoration: none;
+            color: #ecf0f1;
+            background-color: #3498db;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover, form button:hover {
+            background-color: #2980b9;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        footer {
+            background-color: #34495e;
+            color: #ecf0f1;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
     <!-- Add your CSS links, scripts, or other head elements here -->
 </head>
 <body>
@@ -14,52 +79,51 @@
         <h1>Resume Builder</h1>
         <nav>
             {% if user.is_authenticated %}
-                <form method="post" action="{% url 'dashboard' %}" style="display:inline;">
+                <form method="post" action="{% url 'dashboard' %}">
                     {% csrf_token %}
                     <button type="submit">Dashboard</button>
                 </form>
 
-                <form method="post" action="{% url 'add_education' %}" style="display:inline;">
+                <form method="post" action="{% url 'add_education' %}">
                     {% csrf_token %}
                     <button type="submit">Add Education</button>
                 </form>
 
-                <form method="post" action="{% url 'add_experience' %}" style="display:inline;">
+                <form method="post" action="{% url 'add_experience' %}">
                     {% csrf_token %}
                     <button type="submit">Add Experience</button>
                 </form>
 
-                <form method="post" action="{% url 'add_skill' %}" style="display:inline;">
+                <form method="post" action="{% url 'add_skill' %}">
                     {% csrf_token %}
                     <button type="submit">Add Skill</button>
                 </form>
 
-                <form method="post" action="{% url 'add_personal' %}" style="display:inline;">
+                <form method="post" action="{% url 'add_personal' %}">
                     {% csrf_token %}
                     <button type="submit">Add Personal Info</button>
                 </form>
 
-                <form method="post" action="{% url 'add_project' %}" style="display:inline;">
+                <form method="post" action="{% url 'add_project' %}">
                     {% csrf_token %}
                     <button type="submit">Add Project</button>
                 </form>
 
-                <form method="post" action="{% url 'add_certification' %}" style="display:inline;">
+                <form method="post" action="{% url 'add_certification' %}">
                     {% csrf_token %}
                     <button type="submit">Add Certification</button>
                 </form>
 
-                <form method="post" action="{% url 'add_language' %}" style="display:inline;">
+                <form method="post" action="{% url 'add_language' %}">
                     {% csrf_token %}
                     <button type="submit">Add Language</button>
                 </form>
 
-                <form method="post" action="{% url 'generate_resume_pdf' %}" style="display:inline;" target="_blank">
+                <form method="post" action="{% url 'generate_resume_pdf' %}" target="_blank">
                     {% csrf_token %}
                     <button type="submit">Generate PDF</button>
                 </form>
             {% else %}
-
                 <a href="{% url 'login' %}">Login</a>
                 <a href="{% url 'register' %}">Register</a>
             {% endif %}
@@ -71,10 +135,9 @@
     </main>
 
     <footer>
-        <!-- Add footer content if needed -->
+        &copy; 2023 Resume Builder | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
     </footer>
 
     <!-- Add your scripts or other elements before the closing </body> tag if needed -->
 </body>
-
 </html>

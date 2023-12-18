@@ -1,5 +1,4 @@
 <!-- resume_app/templates/resume_app/pdf_template.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,59 +7,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ user.username }}'s Resume</title>
     <style>
-        /* Add your styling here for the PDF */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
         }
-        /* ... */
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 0 0 10px;
+            line-height: 1.6;
+        }
+
+        /* Add your own styling as needed */
     </style>
 </head>
 <body>
-    <h1>{{ user.username }}'s Resume</h1>
+    <header>
+        <h1>{{ user.username }}'s Resume</h1>
+    </header>
 
+    <section>
+        <h2>Personal Information</h2>
+        {% for personal in personals %}
+            <p>Name: {{ personal.name }}</p>
+            <p>Phone: {{ personal.phone }}</p>
+            <p>Email: {{ personal.email }}</p>
+            <p>Address: {{ personal.address }}</p>
+        {% endfor %}
+    </section>
 
-    {% for personal in personals %}
-        <p>Name : {{ personal.name }}</p>
-        <p>Phone : {{ personal.phone }}</p>
-        <p>Email : {{ personal.email }}</p>
-        <p>Address : {{ personal.address }}</p>
-    {% endfor %}
+    <section>
+        <h2>Education</h2>
+        {% for education in educations %}
+            <p>{{ education.degree }} in {{ education.institution }} ({{ education.graduation_year }})</p>
+        {% endfor %}
+    </section>
 
-    <h2>Education</h2>
-    {% for education in educations %}
-        <p>{{ education.degree }} in {{ education.institution }} ({{ education.graduation_year }})</p>
-    {% endfor %}
+    <section>
+        <h2>Experience</h2>
+        {% for experience in experiences %}
+            <p>{{ experience.job_title }} at {{ experience.company }} ({{ experience.start_date }} - {{ experience.end_date }})</p>
+            <p>{{ experience.description }}</p>
+        {% endfor %}
+    </section>
 
-    <h2>Experience</h2>
-    {% for experience in experiences %}
-        <p>{{ experience.job_title }} at {{ experience.company }} ({{ experience.start_date }} - {{ experience.end_date }})</p>
-        <p>{{ experience.description }}</p>
-    {% endfor %}
+    <section>
+        <h2>Skills</h2>
+        {% for skill in skills %}
+            <p>{{ skill.name }}</p>
+        {% endfor %}
+    </section>
 
-    <h2>Skills</h2>
-    {% for skill in skills %}
-        <p>{{ skill.name }}</p>
-    {% endfor %}
+    <section>
+        <h2>Projects</h2>
+        {% for project in projects %}
+            <p>{{ project.title }}</p>
+            <p>{{ project.description }}</p>
+        {% endfor %}
+    </section>
 
-    <h2>Projects</h2>
-    {% for project in projects %}
-        <p>{{ project.title }}</p>
-        <p>{{ project.description }}</p>
-    {% endfor %}
+    <section>
+        <h2>Certifications</h2>
+        {% for certificate in certifications %}
+            <p>{{ certificate.title }}</p>
+            <p>{{ certificate.issuing_organization }}</p>
+            <p>{{ certificate.date_received }}</p>
+        {% endfor %}
+    </section>
 
-    <h2>Certifications</h2>
-    {% for certificate in certifications %}
-        <p>{{ certificate.title }}</p>
-        <p>{{ certificate.issuing_organization }}</p>
-        <p>{{ certificate.date_received }}</p>
-    {% endfor %}
+    <section>
+        <h2>Languages</h2>
+        {% for language in languages %}
+            <p>{{ language.name }}</p>
+        {% endfor %}
+    </section>
 
-    <h2>Languages</h2>
-    {% for language in languages %}
-        <p>{{ language.name }}</p>
-    {% endfor %}
-
-    <!-- Similar sections for skills, projects, certifications, and languages -->
+    <!-- Similar sections for other resume components -->
 
 </body>
 </html>
